@@ -1,9 +1,10 @@
 // app/post/[slug]/page.jsx
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPostBySlug } from "@/lib/posts";
+import { getPostBySlug, getRelatedPosts } from "@/lib/posts";
 import { formatDate } from "@/lib/utils";
-import { ArrowLeft, Clock, Calendar, Share2 } from "lucide-react";
+import ArticleCard from "@/components/ArticleCard";
+import { ArrowLeft, Clock, Calendar } from "lucide-react";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
@@ -27,7 +28,8 @@ export default async function PostPage({ params }) {
     notFound();
   }
 
-  // Split paragraphs by newline breaks for clean spacing
+  // Fetch related articles
+  const relatedPosts = await getRelatedPosts(post.slug, post.category, 2);
   const paragraphs = post.content.split("\n\n").filter(Boolean);
 
   return (
@@ -81,13 +83,36 @@ export default async function PostPage({ params }) {
       </header>
 
       {/* Article Body Content */}
-      <div className="space-y-6 pt-8 text-base text-neutral-800 leading-relaxed sm:text-lg">
+      <div className="space-y-6 pt-8 pb-12 text-base text-neutral-800 leading-relaxed sm:text-lg border-b border-neutral-200">
         {paragraphs.map((para, index) => (
           <p key={index} className="leading-7 sm:leading-8">
             {para}
           </p>
         ))}
       </div>
+
+      {/* Related Stories Section */}
+      {relatedPosts.length > 0 && (
+        <section className="mt-12 space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-xl font-bold tracking-tight text-neutral-900">
+              Related Stories
+            </h2>
+            <Link
+              href={`/category/${post.category.toLowerCase()}`}
+              className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 transition"
+            >
+              More in {post.category} &rarr;
+            </Link>
+          </div>
+
+          <div className="grid gap-6 sm:grid-cols-2">
+            {relatedPosts.map((related) => (
+              <ArticleCard key={related.id} post={related} />
+            ))}
+          </div>
+        </section>
+      )}
     </article>
   );
 }
