@@ -1,6 +1,7 @@
 // components/Navbar.jsx
 import Link from "next/link";
 import { Newspaper, PenSquare } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const categories = [
@@ -10,16 +11,15 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur-sm transition-colors dark:border-neutral-800 dark:bg-neutral-950/95">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4 sm:px-6">
-        
         {/* Brand Logo */}
         <div className="flex items-center gap-8">
           <Link
             href="/"
-            className="flex items-center gap-2 text-lg font-bold tracking-tight text-neutral-900 transition hover:opacity-80"
+            className="flex items-center gap-2 text-lg font-bold tracking-tight text-neutral-900 transition hover:opacity-80 dark:text-white"
           >
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-900 text-white dark:bg-neutral-100 dark:text-neutral-900">
               <Newspaper className="h-4 w-4" />
             </span>
             <span>FeedCMS</span>
@@ -31,7 +31,7 @@ export default function Navbar() {
               <Link
                 key={cat.label}
                 href={cat.href}
-                className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900"
+                className="text-sm font-medium text-neutral-600 transition hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white"
               >
                 {cat.label}
               </Link>
@@ -39,17 +39,18 @@ export default function Navbar() {
           </nav>
         </div>
 
-        {/* Action Button */}
+        {/* Action Buttons & Theme Toggle */}
         <div className="flex items-center gap-3">
+          <ThemeToggle />
+
           <Link
             href="/editor"
-            className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-neutral-800 sm:text-sm"
+            className="inline-flex items-center gap-2 rounded-lg bg-neutral-900 px-3.5 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:bg-neutral-800 dark:bg-white dark:text-neutral-900 dark:hover:bg-neutral-200 sm:text-sm"
           >
             <PenSquare className="h-4 w-4" />
             <span>Write Story</span>
           </Link>
         </div>
-
       </div>
     </header>
   );

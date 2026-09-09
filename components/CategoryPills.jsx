@@ -10,7 +10,7 @@ export default function CategoryPills({ activeCategory = "all" }) {
   ];
 
   return (
-    <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+    <div className="scrollbar-none flex items-center gap-2 overflow-x-auto pb-2">
       {categories.map((cat) => {
         const isActive = activeCategory.toLowerCase() === cat.slug;
 
@@ -20,8 +20,8 @@ export default function CategoryPills({ activeCategory = "all" }) {
             href={cat.href}
             className={`shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition ${
               isActive
-                ? "bg-neutral-900 text-white shadow-xs"
-                : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 hover:text-neutral-900"
+                ? "bg-neutral-900 text-white shadow-xs dark:bg-white dark:text-neutral-900"
+                : "bg-neutral-100 text-neutral-600 hover:bg-neutral-200 hover:text-neutral-900 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white"
             }`}
           >
             {cat.label}
