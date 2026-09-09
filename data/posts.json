@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "slug": "nextjs-server-components-guide",
+    "title": "Understanding Next.js Server Components",
+    "excerpt": "Learn how React Server Components reduce bundle sizes and improve Core Web Vitals.",
+    "category": "Tech",
+    "publishedAt": "2026-09-01",
+    "readingTime": "4 min read",
+    "content": "React Server Components (RSC) represent a major shift in how web applications are rendered. Instead of shipping large JavaScript bundles to the browser for execution, components run exclusively on the server.\n\nThis means faster page loads, zero client bundle cost for server-only dependencies, and immediate access to your data layer without intermediate API layers."
+  },
+  {
+    "id": "2",
+    "slug": "tactical-evolution-modern-football",
+    "title": "Tactical Evolution in Modern Football",
+    "excerpt": "How modern teams utilize high pressing and inverted fullbacks to dominate transition phases.",
+    "category": "Sports",
+    "publishedAt": "2026-09-05",
+    "readingTime": "5 min read",
+    "content": "Modern football is governed by transitions and spatial compression. The traditional flat back four has evolved into dynamic defensive shapes where fullbacks push into midfield roles in possession.\n\nTeams no longer defend passively in low blocks; instead, aggressive counter-pressing traps are triggered the instant possession is lost in the attacking third."
+  },
+  {
+    "id": "3",
+    "slug": "state-of-developer-ai-tooling-2026",
+    "title": "The State of Developer AI Tooling in 2026",
+    "excerpt": "From localized coding agents to autonomous refactoring, here is how developer workflows are evolving.",
+    "category": "AI",
+    "publishedAt": "2026-09-08",
+    "readingTime": "6 min read",
+    "content": "Developer tools in 2026 have progressed beyond simple autocomplete suggestions. Code generation is now contextually integrated into IDEs, build systems, and continuous delivery workflows.\n\nThe real power comes from agents running directly against local repository structures, validating syntax, generating unit tests, and automating boilerplate configurations."
+  }
+]
